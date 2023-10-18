@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const ctrlLocations = require('../controllers/locations');
+const ctrlTasks = require('../controllers/tasks');
 
 
 /* Locations pages */
-router.get('/', ctrlLocations.login);
-router.get('/tasks', ctrlLocations.tasklist);
-router.get('/register', ctrlLocations.register);
+router.get('/', ctrlTasks.login);
+router.get('/tasks', ctrlTasks.tasklist);
+router.get('/register', ctrlTasks.register);
 module.exports = router;

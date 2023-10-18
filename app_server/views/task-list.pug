@@ -1,16 +1,21 @@
-extends layoutTasks
+extends layout
 block content
+  nav.navbar.navbar-expand-lg.bg-light(data-bs-theme='light')
+          .container-fluid
+            a.navbar-brand(href='/tasks') #{pageHeader.title}
+            button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarColor03', aria-controls='navbarColor03', aria-expanded='false', aria-label='Toggle navigation')
+              span.navbar-toggler-icon
+            #navbarColor03.collapse.navbar-collapse
+              ul.navbar-nav.me-auto
+              form(action='/')
+                button.btn.btn-danger(type='submit')
+                  | Log Out
   br
   .container.d-flex.justify-content-center.align-items-center
     .card.border-primary.col-12.col-md-10
       .card-header
-        h3 Current Tasks
+        h3 #{pageHeader.tasksTitle}
       .card-body
-        p.task.complete
-          | Web Frameworks static site
-        p.task
-          | Software Tools
-        p.task
-          | Update CV
-        p.task.complete
-          | Go to the gym
+        each task in tasks
+          p.task
+            | #{task.name}
