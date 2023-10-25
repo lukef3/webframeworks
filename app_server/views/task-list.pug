@@ -18,4 +18,4 @@ block content
       .card-body
         each task in tasks
           p.task
-            | #{task.name}
+            | Task: #{task.name} &nbsp;&nbsp;&nbsp; Category: #{task.category} &nbsp;&nbsp;&nbsp; Priority: #{task.priority} &nbsp;&nbsp;&nbsp; Due Date: #{task.dueDate}

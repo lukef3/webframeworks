@@ -11,29 +11,40 @@ const tasklist = function (req, res) {
             tasksTitle: 'Current Tasks'
         },
         tasks:[{
-            taskID: 1,
             name: 'Web Frameworks',
             category: "College",
             priority: 1,
-            dueDate: '123',
+            dueDate: '1/1/1',
         },{
-            taskID: 2,
             name: 'Software Tools',
             category: "College",
             priority: 2,
-            dueDate: '123',
+            dueDate: '1/1/1',
         },{
-            taskID: 3,
             name: 'Update CV',
             category: "Work",
             priority: 3,
-            dueDate: '123',
+            dueDate: '1/1/1',
         },{
-            taskID: 4,
             name: 'Go to gym',
             category: "Fitness",
             priority: 1,
-            dueDate: '123',
+            dueDate: '1/1/1',
+        },{
+            name: 'Data Structures CA',
+            category: "College",
+            priority: 1,
+            dueDate: '1/1/1',
+        },{
+            name: 'OOAD CA',
+            category: "College",
+            priority: 1,
+            dueDate: '1/1/1',
+        },{
+            name: 'OOAD CA',
+            category: "College",
+            priority: 1,
+            dueDate: '1/1/1',
         }]
     });
 };
