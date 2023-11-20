@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ctrlTasks = require('../controllers/locations');
+const ctrlTasks = require('../controllers/tasks');
 
 
 /* Locations pages */
