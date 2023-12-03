@@ -8,7 +8,55 @@ html
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
-    script(src='/javascripts/bootstrap.min.js')    
+    script(src='/javascripts/bootstrap.min.js')  
+    script.  
+      function showConfirmationAlert(message, yesCallback) {
+        var alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-dismissible alert-info';
+        alertDiv.style.position = 'fixed';
+        alertDiv.style.left = '50%';
+        alertDiv.style.top = '50%';
+        alertDiv.style.transform = 'translate(-50%, -50%)';
+        alertDiv.style.zIndex = '1000';
+
+        var closeButton = document.createElement('button');
+        closeButton.type = 'button';
+        closeButton.className = 'btn-close';
+        closeButton.setAttribute('data-bs-dismiss', 'alert');
+
+        var heading = document.createElement('h4');
+        heading.className = 'alert-heading';
+        heading.textContent = 'Heads up!';
+
+        var paragraph = document.createElement('p');
+        paragraph.className = 'mb-0';
+        paragraph.textContent = message;
+
+        var yesButton = document.createElement('button');
+        yesButton.type = 'button';
+        yesButton.className = 'btn btn-primary';
+        yesButton.textContent = 'Yes';
+        yesButton.addEventListener('click', function () {
+          yesCallback();
+          alertDiv.remove();
+        });
+
+        var noButton = document.createElement('button');
+        noButton.type = 'button';
+        noButton.className = 'btn btn-secondary';
+        noButton.textContent = 'No';
+        noButton.addEventListener('click', function () {
+          alertDiv.remove();
+        });
+
+        alertDiv.appendChild(closeButton);
+        alertDiv.appendChild(heading);
+        alertDiv.appendChild(paragraph);
+        alertDiv.appendChild(yesButton);
+        alertDiv.appendChild(noButton);
+
+        document.body.appendChild(alertDiv);
+      }
     body
       block content
     
