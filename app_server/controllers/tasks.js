@@ -3,7 +3,7 @@ const apiOptions = {
     server: 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://your-production-url.com';
+    apiOptions.server = 'https://helloexpresslf.onrender.com';
 }
 
 const renderTaskList = (req, res, responseBody) => {
@@ -17,9 +17,10 @@ const renderTaskList = (req, res, responseBody) => {
     });
 };
 
-const tasklist = function (req, res) {
+const homelist = function (req, res) {
+    const path = '/api/tasks';
     const requestOptions = {
-        url: `${apiOptions.server}/api/tasks`,
+        url : apiOptions.server + path,
         method: 'GET',
         json: {}
     };
@@ -43,7 +44,7 @@ const register = function (req, res) {
 };
 
 module.exports = {
-    tasklist,
+    homelist,
     login,
     register
 };
