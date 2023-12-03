@@ -5,51 +5,42 @@ const login = function (req, res) {
     res.render('login', { title: 'Login' });
 };
 
-const tasklist = function (req, res) {
-    res.render('task-list', { 
-        title: 'Task List',
-        pageHeader: {
-            title: 'Student Planner',
-            tasksTitle: 'Current Tasks'
-        },
-        tasks:[{
-            name: 'Web Frameworks',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'Software Tools',
-            category: "College",
-            priority: 2,
-            dueDate: '1/1/1',
-        },{
-            name: 'Update CV',
-            category: "Work",
-            priority: 3,
-            dueDate: '1/1/1',
-        },{
-            name: 'Go to gym',
-            category: "Fitness",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'Data Structures CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'OOAD CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'OOAD CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        }]
-    });
+const tasklist = async function (req, res) {
+    try {
+        const tasks = await Task.find({});
+        
+        res.render('task-list', { 
+            title: 'Task List',
+            pageHeader: {
+                title: 'Student Planner',
+                tasksTitle: 'Current Tasks'
+            },
+            tasks: tasks
+        });
+    } catch (err) {
+        res.render('error', { error: err });
+    }
 };
+
+
+
+const taskDeleteOne = async function (req, res) {
+    const taskid = req.params.taskid;
+    if (taskid) {
+      try {
+        await Task
+        .findByIdAndRemove(taskid);
+        res.status(204).json(null);
+      } catch (err) {
+        res.status(404).json(err);
+      }
+    } 
+    else {
+      res.status(404).json({ "message": "No taskid" });
+    }
+};
+  
+
 
 const register = function (req, res) {
     res.render('register-form', { title: 'Add review' });
@@ -58,5 +49,6 @@ const register = function (req, res) {
 module.exports = {
     login,
     tasklist,
-    register
+    register,
+    taskDeleteOne
 };

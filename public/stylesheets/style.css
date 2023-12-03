@@ -21,17 +21,38 @@ border-bottom-right-radius: .3rem;
 }
 }
 
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.table thead th {
+  background-color: white;
+}
+
+.table tbody tr td {
+  background-color: white;
+  transition: background-color .25s ease-in-out;
+}
+
+.table tbody tr:hover td {
+  background-color: #7b8ab8; /* This changes the background color on hover */
+  color: white;
+}
+
 .task{
   background-color: white;
   padding: 15px 20px;
   border-radius: 5px;
   margin-top: 10px;
 
-  transition: .325s;
+  transition: .25s;
   cursor: pointer;
 
   &:active{
     transform: scale(0.95);
+    text-decoration: line-through; /* Add strikethrough to text */
   }
 
   &:hover{

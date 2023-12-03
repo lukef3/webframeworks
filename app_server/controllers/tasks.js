@@ -1,52 +1,41 @@
-
-const login = function (req, res) {
-    res.render('login', { title: 'Login' });
+const request = require('request');
+const apiOptions = {
+    server: 'http://localhost:3000'
 };
+if (process.env.NODE_ENV === 'production') {
+    apiOptions.server = 'https://your-production-url.com';
+}
 
-const tasklist = function (req, res) {
+const renderTaskList = (req, res, responseBody) => {
     res.render('task-list', { 
         title: 'Task List',
         pageHeader: {
             title: 'Student Planner',
             tasksTitle: 'Current Tasks'
         },
-        tasks:[{
-            name: 'Web Frameworks',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'Software Tools',
-            category: "College",
-            priority: 2,
-            dueDate: '1/1/1',
-        },{
-            name: 'Update CV',
-            category: "Work",
-            priority: 3,
-            dueDate: '1/1/1',
-        },{
-            name: 'Go to gym',
-            category: "Fitness",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'Data Structures CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'OOAD CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        },{
-            name: 'OOAD CA',
-            category: "College",
-            priority: 1,
-            dueDate: '1/1/1',
-        }]
+        tasks: responseBody
     });
+};
+
+const tasklist = function (req, res) {
+    const requestOptions = {
+        url: `${apiOptions.server}/api/tasks`,
+        method: 'GET',
+        json: {}
+    };
+    request(requestOptions, (err, response, body) => {
+        if (err) {
+            console.error(err);
+            res.render('error', { error: 'Error fetching tasks' });
+            return;
+        }
+        renderTaskList(req, res, body);
+    });
+};
+
+
+const login = function (req, res) {
+    res.render('login', { title: 'Login' });
 };
 
 const register = function (req, res) {
@@ -54,7 +43,7 @@ const register = function (req, res) {
 };
 
 module.exports = {
-    login,
     tasklist,
+    login,
     register
 };
