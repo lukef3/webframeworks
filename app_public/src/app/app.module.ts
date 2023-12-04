@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 import { RegisterComponent } from './register/register.component';
 
+import { HttpHeaders, HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
-
     RegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [RegisterComponent]

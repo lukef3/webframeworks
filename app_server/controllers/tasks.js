@@ -1,3 +1,4 @@
+//express
 const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
@@ -40,7 +41,7 @@ const login = function (req, res) {
 };
 
 const register = function (req, res) {
-    res.render('register-form', { title: 'Add review' });
+    res.render('register-form', { title: 'Register' });
 };
 
 module.exports = {

@@ -16,21 +16,22 @@ block content
       .card-header
         h3 #{pageHeader.tasksTitle}
       .card-body
-        table.table.table-hover
-          thead
-            tr
-              th Name
-              th Category
-              th Priority
-              th Due Date
-          tbody
-            each task in tasks
-              //-Adding task ID to each row in the table
-              tr.task(data-id=task._id.toString())  
-                td #{task.name}
-                td #{task.category}
-                td #{task.priority}
-                td #{task.dueDate}
+        .table-container(style='height:60vh; overflow-y: auto; width:100%; border-radius:.375rem')
+          table.table.table-hover
+            thead
+              tr
+                th Name
+                th Category
+                th Priority
+                th Due Date
+            tbody
+              each task in tasks
+                //-Adding task ID to each row in the table
+                tr.task(data-id=task._id.toString())  
+                  td #{task.name}
+                  td #{task.category}
+                  td #{task.priority}
+                  td #{task.dueDate}
   
   //-Adding click listener to each row, which calls the delte function in the api controller
   script.
@@ -39,11 +40,11 @@ block content
     taskRows.forEach(row => {
       row.addEventListener('click', function () {
         const taskId = this.dataset.id;
-        showConfirmationAlert('Are you sure you want to delete this task?', function () {
-          fetch('/api/tasks/' + taskId, { method: 'DELETE' })
+        showConfirmationAlert('Are you sure you want to remove this task?', function () {     // display javascript confirmation message with bootswatch popup
+          fetch('/api/tasks/' + taskId, { method: 'delete' })     // Call delete function in tasks api
             .then(response => {
               if (response.ok || response.status === 204) {
-                window.location.reload(); // Reload the page to reflect the changes
+                window.location.reload(); // Reload the page 
               } else {
                 throw new Error('Deletion failed');
               }
