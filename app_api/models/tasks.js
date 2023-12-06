@@ -4,7 +4,7 @@ const taskSchema = new mongoose.Schema({
     name: String,
     category: String,
     priority: Number,
-    dueDate: Date
+    dueDate: String
 });
 
 mongoose.model('Task', taskSchema);

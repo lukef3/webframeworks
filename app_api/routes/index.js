@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const ctrlTasks = require('../controllers/tasks');
-const ctrlUsers = require('../controllers/users');
 
 router
   .route('/tasks')
@@ -11,9 +10,5 @@ router
 router
   .route('/tasks/:taskid')
   .delete(ctrlTasks.taskDeleteOne);
-
-router
-  .route('/register')
-  .post(ctrlUsers.registerUser);
 
 module.exports = router;

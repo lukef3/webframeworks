@@ -36,16 +36,6 @@ const homelist = function (req, res) {
 };
 
 
-const login = function (req, res) {
-    res.render('login', { title: 'Login' });
-};
-
-const register = function (req, res) {
-    res.render('register-form', { title: 'Register' });
-};
-
 module.exports = {
-    homelist,
-    login,
-    register
+    homelist
 };

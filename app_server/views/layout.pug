@@ -57,7 +57,50 @@ html
 
         document.body.appendChild(alertDiv);
       }
+      function showOkAlert(message, okCallback) {
+        var alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-dismissible alert-info';
+        alertDiv.style.position = 'fixed';
+        alertDiv.style.left = '50%';
+        alertDiv.style.top = '50%';
+        alertDiv.style.transform = 'translate(-50%, -50%)';
+        alertDiv.style.zIndex = '1000';
+
+        var closeButton = document.createElement('button');
+        closeButton.type = 'button';
+        closeButton.className = 'btn-close';
+        closeButton.setAttribute('data-bs-dismiss', 'alert');
+
+        var heading = document.createElement('h4');
+        heading.className = 'alert-heading';
+        heading.textContent = 'Notice';
+
+        var paragraph = document.createElement('p');
+        paragraph.className = 'mb-0';
+        paragraph.textContent = message;
+
+        var okButton = document.createElement('button');
+        okButton.type = 'button';
+        okButton.className = 'btn btn-primary';
+        okButton.textContent = 'OK';
+        okButton.addEventListener('click', function () {
+          if (okCallback) okCallback();
+          alertDiv.remove();
+        });
+
+        alertDiv.appendChild(closeButton);
+        alertDiv.appendChild(heading);
+        alertDiv.appendChild(paragraph);
+        alertDiv.appendChild(okButton);
+
+        document.body.appendChild(alertDiv);
+      }
     body
       block content
-      block scripts
+
+      if error && error.length > 0
+        script.
+            var errorMsg = "#{error}";
+            showOkAlert(errorMsg);
+
     

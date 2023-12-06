@@ -7,9 +7,9 @@ block content
               span.navbar-toggler-icon
             #navbarColor03.collapse.navbar-collapse
               ul.navbar-nav.me-auto
-              form(action='/')
-                button.btn.btn-danger(type='submit')
-                  | Log Out
+              form(action='/', id='logoutForm')
+                button.btn.btn-danger(type='button' id='logoutButton') Log Out
+
   br
   .container.d-flex.justify-content-center.align-items-center
     .card.border-primary.col-12.col-md-10
@@ -33,12 +33,12 @@ block content
                   td #{task.priority}
                   td #{task.dueDate}
   
-  //-Adding click listener to each row, which calls the delte function in the api controller
+  //- Adding click listener to each row, which calls the delete function in the api controller
   script.
-    const taskRows = document.querySelectorAll('.task');
+    const taskRows = document.querySelectorAll('.task');    //Get taskRows
 
     taskRows.forEach(row => {
-      row.addEventListener('click', function () {
+      row.addEventListener('click', function () {       //Add click event listener to each row
         const taskId = this.dataset.id;
         showConfirmationAlert('Are you sure you want to remove this task?', function () {     // display javascript confirmation message with bootswatch popup
           fetch('/api/tasks/' + taskId, { method: 'delete' })     // Call delete function in tasks api
@@ -56,6 +56,14 @@ block content
         });
       });
     });
+
+    document.getElementById('logoutButton').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the form from submitting right away
+      showConfirmationAlert('Are you sure you want to log out?', function() {
+        document.getElementById('logoutForm').submit(); // Submit the form if user confirms
+      });
+    });
+
 
 
     

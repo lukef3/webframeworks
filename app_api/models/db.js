@@ -5,7 +5,7 @@ try {
 mongoose.connect(
 dbURI,
 { useNewUrlParser: true, useUnifiedTopology: true }).then(
-() => {console.log(" Mongoose is connected")},
+() => {console.log("DB - Mongoose is connected")},
 err=> {console.log(err)}
 );
 }
