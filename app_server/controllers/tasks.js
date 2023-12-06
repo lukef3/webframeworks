@@ -4,7 +4,7 @@ const apiOptions = {
     server: 'https://helloexpresslf.onrender.com'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://helloexpresslf.onrender.com/';
+    apiOptions.server = 'https://helloexpresslf.onrender.com';
 }
 
 const renderTaskList = (req, res, responseBody) => {
