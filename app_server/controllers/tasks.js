@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const renderTaskList = (req, res, responseBody) => {
     res.render('task-list', { 
+        user: req.user,
         title: 'Task List',
         pageHeader: {
             title: 'Student Planner',

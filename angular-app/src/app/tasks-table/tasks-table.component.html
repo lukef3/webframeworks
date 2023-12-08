@@ -1,0 +1,24 @@
+<div *ngIf="tasks && tasks.length; else noDataTemplate">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks" [attr.data-id]="task._id">
+          <td>{{ task.name }}</td>
+          <td>{{ task.category }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.dueDate | date:'shortDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noDataTemplate>
+    <p>No tasks available.</p>
+  </ng-template>
+  

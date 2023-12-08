@@ -32,8 +32,7 @@ block content
                   td #{task.category}
                   td #{task.priority}
                   td #{task.dueDate}
-  
-  //- Adding click listener to each row, which calls the delete function in the api controller
+
   script.
     const taskRows = document.querySelectorAll('.task');    //Get taskRows
 
@@ -41,7 +40,7 @@ block content
       row.addEventListener('click', function () {       //Add click event listener to each row
         const taskId = this.dataset.id;
         showConfirmationAlert('Are you sure you want to remove this task?', function () {     // display javascript confirmation message with bootswatch popup
-          fetch('/api/tasks/' + taskId, { method: 'delete' })     // Call delete function in tasks api
+          fetch('/api/tasks/' + taskId, { method: 'DELETE' })     // Call delete function in tasks api
             .then(response => {
               if (response.ok || response.status === 204) {
                 window.location.reload(); // Reload the page 

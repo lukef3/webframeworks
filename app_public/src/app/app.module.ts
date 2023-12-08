@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { RegisterComponent } from './register/register.component';
 
 import { HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { TasksTableComponent } from './tasks-table/tasks-table.component';
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    TasksTableComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +19,6 @@ import { HttpHeaders, HttpClientModule } from '@angular/common/http';
     FormsModule
   ],
   providers: [],
-  bootstrap: [RegisterComponent]
+  bootstrap: [TasksTableComponent]
 })
 export class AppModule { }

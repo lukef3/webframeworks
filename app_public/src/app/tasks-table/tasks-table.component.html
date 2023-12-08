@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks" (click)="onDeleteTask(task._id)">
+        <td>{{ task.name }}</td>
+        <td>{{ task.category }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.dueDate | date }}</td>
+      </tr>
+    </tbody>
+  </table>

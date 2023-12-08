@@ -24,7 +24,6 @@ router.post('/', function(req, res, next) {
                 // Handle error from login function
                 return next(err);
             }
-            // Successful login, redirect to tasks
             return res.redirect('/tasks');
         });
     })(req, res, next);
