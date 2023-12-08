@@ -16,9 +16,10 @@ const taskDeleteOne = async function (req, res) {
     const taskid = req.params.taskid;
     if (taskid) {
         try {
-            await Task.findByIdAndRemove(taskid);
+            await Task.findByIdAndDelete(taskid);
             res.status(204).json(null);
         } catch (err) {
+            console.log(err);
             res.status(404).json(err);
         }
     } else {
