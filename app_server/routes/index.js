@@ -32,6 +32,10 @@ router.post('/', function(req, res, next) {
 
 router.get('/tasks', ctrlTasks.homelist);
 
+router.get('/about', function(req, res) {
+    res.render('about', { title: 'About' });
+});
+
 router.get('/register', function(req, res) {
     res.render('register-form', { title: 'Register' , user: req.user});
 });

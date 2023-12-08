@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TasksTableComponent } from './tasks-table/tasks-table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './about/about.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksTableComponent
+    TasksTableComponent,
+    AboutComponent
     // other components
   ],
   imports: [
@@ -17,6 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     // other modules
   ],
   providers: [],
-  bootstrap: [TasksTableComponent]
+  bootstrap: [AboutComponent]
 })
 export class AppModule { }
