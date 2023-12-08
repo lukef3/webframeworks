@@ -5,7 +5,6 @@ const Task = mongoose.model('Task');
 const taskList = async function (req, res) {
     try {
         const tasks = await Task.find({});
-        console.log(tasks);
         res.status(200).json(tasks);
     } catch (err) {
         res.status(400).json({ error: err });
